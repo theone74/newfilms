@@ -1,0 +1,6 @@
+/node_modules/
+/public/build/
+/ssr
+.git_*
+.gitlab*
+.DS_Store
