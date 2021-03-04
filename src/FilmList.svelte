@@ -13,7 +13,8 @@
 	export let page;
 
 	async function getList(page) {
-		return await (await fetch("../list.json")).json();
+		let lst = await (await fetch("../list.json")).json();
+		return lst.filter((i,j)=>Math.floor(j/15)==2)
 	}
 
 </script>
