@@ -14,7 +14,7 @@
 
 	async function getList(page) {
 		let lst = await (await fetch("../list.json")).json();
-		return lst.filter((i,j)=>Math.floor(j/15)==2)
+		return lst.filter((i,j)=>Math.floor(j/15)==page)
 	}
 
 </script>
