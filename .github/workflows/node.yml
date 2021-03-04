@@ -36,8 +36,9 @@ jobs:
 
       - run: npm i
       - run: npx rollup -c
-      - run: which curl
-      - run: apk update && apk add curl
+      - run: mv public new
+      - run: find new/ -type d -exec curl -X MKCOL '${{ secrets.BASE_URL }}/{}/' --user "${{ secrets.WEBDAV_CRED }}" \;
+      - run: find new/ -type f -exec curl -T {} '${{ secrets.BASE_URL }}/{}' --user "${{ secrets.WEBDAV_CRED }}" \;
       
 
       # Runs a set of commands using the runners shell
