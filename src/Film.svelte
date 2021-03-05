@@ -22,7 +22,11 @@
 				<div class="tlinks">
 					{#if Array.isArray(data['rutracker_links'])}
 						{#each data['rutracker_links'] as link}
-							<div><a href="{link['page']}">{link['title']}</a></div>
+							<div>
+								<img src={rutrimg} alt="rutracker" class="ticon rutr">
+								<a href="{link['torrentlink']}">{link['size']}</a>
+								<a href="{link['page']}" target="_blank">{link['title']}</a>
+							</div>
 						{/each}
 					{/if}
 				</div>
@@ -62,6 +66,12 @@
 		margin-top: 20px;
 		font-size: 13px;
 	}
+	.tlinks > div > * {
+		/* display: inline-block; */
+	}
+	.tlinks > div > .ticon {
+		width: 1.2em;
+	}
 	.imgborder {
 		padding: 0px;
 		border: 5px solid gray;
@@ -88,6 +98,8 @@
 </style>
 
 <script>
+	import rutrimg from '../img/rutracker.png'
+	import rutorimg from '../img/rutor.png'
 	import {getVar} from './utils'
 	export let filmid;
 	// console.log(filmid);

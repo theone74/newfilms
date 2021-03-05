@@ -4,3 +4,4 @@
 .git_*
 .gitlab*
 .DS_Store
+/*.json
