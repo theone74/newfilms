@@ -29,6 +29,15 @@
 							</div>
 						{/each}
 					{/if}
+					{#if Array.isArray(data['rutor_links'])}
+						{#each data['rutor_links'] as link}
+							<div>
+								<img src={rutorimg} alt="rutor" class="ticon rutor">
+								<a href="{link['torrentlink']}">{link['size']}&nbsp;↓</a>
+								<a href="{link['page']}" target="_blank">{link['title']}</a>
+							</div>
+						{/each}
+					{/if}
 				</div>
 			</td>
 		</tr>
