@@ -24,7 +24,12 @@
 						{#each data['rutracker_links'] as link}
 							<div>
 								<img src={rutrimg} alt="rutracker" class="ticon rutr">
-								<a href="{link['torrentlink']}">{link['size']}</a>
+								{#if link['magnet_link']}
+									<a href="{link['magnet_link']}" title="Magnet"><img src={magnetimg} alt="torrent" class="ticon rutr"></a>
+								{/if}
+								<a href="{link['torrentlink']}"title="Download torrent file">
+									<img src={torrentimg} alt="torrent" class="ticon rutr"> {link['size']}
+								</a>
 								<a href="{link['page']}" target="_blank">{link['title']}</a>
 							</div>
 						{/each}
@@ -33,7 +38,9 @@
 						{#each data['rutor_links'] as link}
 							<div>
 								<img src={rutorimg} alt="rutor" class="ticon rutor">
-								<a href="{link['torrentlink']}">{link['size']}&nbsp;↓</a>
+								<a href="{link['torrentlink']}" title="Download torrent file">
+									<img src={torrentimg} alt="torrent" class="ticon rutor"> {link['size']}&nbsp;↓
+								</a>
 								<a href="{link['page']}" target="_blank">{link['title']}</a>
 							</div>
 						{/each}
@@ -104,11 +111,17 @@
 	.ratingpanel span{
 		width: 100%;
 	}
+
+	.ticon {
+		width: 16px;
+	}
 </style>
 
 <script>
 	import rutrimg from '../img/rutracker.png'
 	import rutorimg from '../img/rutor.png'
+	import torrentimg from '../img/torrent.png'
+	import magnetimg from '../img/magnet.png'
 	import {getVar} from './utils'
 	export let filmid;
 	// console.log(filmid);
