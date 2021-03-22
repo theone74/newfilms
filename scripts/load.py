@@ -1,6 +1,6 @@
 import os, requests, json
 
-baseurl = 'http://prox.theone74.ru:1234'
+baseurl = os.getenv("CDN_FILMS_READ_URL")
 
 # http://prox.theone74.ru:1234/list.json
 r = requests.get(baseurl + '/list.json')
@@ -15,6 +15,8 @@ lst = json.loads(cont)
 for i in lst:
 	r = requests.get("%s/%s.json" % (baseurl, i))
 	cont = r.content
-	with open("%s.json" % (i), 'w') as f:
+	fn = "%s.json" % (i)
+	with open(fn, 'w') as f:
 		f.write(cont.decode('utf-8'))
+		print("Write", fn)
 		f.close()
