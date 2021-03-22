@@ -30,7 +30,7 @@
 								<a href="{link['torrentlink']}"title="Download torrent file">
 									<img src={torrentimg} alt="torrent" class="ticon rutr"> {link['size']}
 								</a>
-								<a href="{link['page']}" target="_blank">{link['title']}</a>
+								<a href="{link['page']}" target="_blank" class="tlink" title="{link['title']}">{link['title']}</a>
 							</div>
 						{/each}
 					{/if}
@@ -41,7 +41,7 @@
 								<a href="{link['torrentlink']}" title="Download torrent file">
 									<img src={torrentimg} alt="torrent" class="ticon rutor"> {link['size']}&nbsp;↓
 								</a>
-								<a href="{link['page']}" target="_blank">{link['title']}</a>
+								<a href="{link['page']}" target="_blank" class="tlink" title="{link['title']}">{link['title']}</a>
 							</div>
 						{/each}
 					{/if}
@@ -85,8 +85,15 @@
 	.tlinks > div > * {
 		/* display: inline-block; */
 	}
-	.tlinks > div > .ticon {
-		width: 1.2em;
+	.tlinks > div .ticon {
+		width: 16px;
+	}
+	.tlinks > div {
+		overflow: hidden;
+		text-overflow: ellipsis;
+		display: -webkit-inline-box;
+		-webkit-line-clamp: 1; /* number of lines to show */
+		-webkit-box-orient: vertical;
 	}
 	.imgborder {
 		padding: 0px;
@@ -112,9 +119,6 @@
 		width: 100%;
 	}
 
-	.ticon {
-		width: 16px;
-	}
 </style>
 
 <script>
