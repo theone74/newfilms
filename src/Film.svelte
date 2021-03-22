@@ -91,7 +91,7 @@
 	.tlinks > div {
 		overflow: hidden;
 		text-overflow: ellipsis;
-		display: -webkit-inline-box;
+		display: -webkit-box;
 		-webkit-line-clamp: 1; /* number of lines to show */
 		-webkit-box-orient: vertical;
 	}
