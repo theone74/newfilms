@@ -38,6 +38,9 @@
 						{#each data['rutor_links'] as link}
 							<div>
 								<img src={rutorimg} alt="rutor" class="ticon rutor">
+								{#if link['magnet_link']}
+									<a href="{link['magnet_link']}" title="Magnet"><img src={magnetimg} alt="torrent" class="ticon rutor"></a>
+								{/if}
 								<a href="{link['torrentlink']}" title="Download torrent file">
 									<img src={torrentimg} alt="torrent" class="ticon rutor"> {link['size']}&nbsp;↓
 								</a>
