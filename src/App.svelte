@@ -1,22 +1,23 @@
+<RatingFilterMenu></RatingFilterMenu>
 
 <div class="transport">
-	{#if page > 0}
-		<a href="{prevPage}">&lt;&lt; Prev</a>
+	{#if p.page > 0}
+		<a href="#wait" on:click={prevPage}>&lt;&lt; Prev</a>
 	{/if}
-	<a href="{nextPage}">Next &gt;&gt;</a>
+	<a href="#wait" on:click={nextPage}>Next &gt;&gt;</a>
 </div>
 
 <div class="container">
 	{#if typeof fetch !== 'undefined' }
-	<FilmList page={page}></FilmList>
+	<FilmList page={p.page ? p.page : 0}></FilmList>
 	{/if}
 </div>
 
 <div class="transport">
-	{#if page > 0}
-		<a href="{prevPage}">&lt;&lt; Prev</a>
+	{#if p.page > 0}
+		<a href="#wait" on:click={prevPage}>&lt;&lt; Prev</a>
 	{/if}
-	<a href="{nextPage}">Next &gt;&gt;</a>
+	<a href="#wait" on:click={nextPage}>Next &gt;&gt;</a>
 </div>
 
 <style>
@@ -34,14 +35,18 @@
 
 <script>
 	import FilmList from "./FilmList.svelte";
-	export let page;
+	import RatingFilterMenu from "./RatingFilterMenu.svelte";
+	import {Params} from './utils'
+	let p = new Params()
 
-	let nextPage = `?page=${parseInt(page)+1}`;
-	let prevPage = `?page=${parseInt(page)-1}`;
+	function nextPage() {
+		p.page = parseInt(p.page ? p.page : '0') + 1;
+		p.save()
+	}
 
-	if (typeof fetch === 'undefined') {
-		nextPage = `${parseInt(page)+1}.html`;
-		prevPage = `${parseInt(page)-1}.html`;
+	function prevPage() {
+		p.page = parseInt(p.page ? p.page : '0') - 1;
+		p.save()
 	}
 
 	let name = 'world';
